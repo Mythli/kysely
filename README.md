@@ -216,10 +216,21 @@ const db = new Kysely<Database>({
       host: 'localhost',
       database: 'kysely_test'
     }),
+    
+    
+    
     cursor: Cursor
   }),
   // MysqlDialect doesn't require any special configuration
 })
+
+// For Sqlite use SqliteDialect and install better-sqlite3, for more options check https://www.npmjs.com/package/better-sqlite3
+// const db = new Kysely<Database>({
+//  
+//  dialect: new SqliteDialect({
+//    database: require('better-sqlite3')('./sample.db'),
+//  }),
+// });
 
 async function demo() {
   for await (const adult of db.selectFrom('person')
